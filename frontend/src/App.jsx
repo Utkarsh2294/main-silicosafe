@@ -368,7 +368,12 @@ const FONTS = `
 `;
 
 // ─── AI DISCLAIMER BANNER ─────────────────────────────────────────────────────
+//const API_BASE = (import.meta.env.VITE_API_URL || "http://localhost:8000").replace(/\/$/, "");
+console.log("VITE_API_URL =", import.meta.env.VITE_API_URL);
+
 const API_BASE = (import.meta.env.VITE_API_URL || "http://localhost:8000").replace(/\/$/, "");
+
+console.log("API_BASE =", API_BASE);
 const AUTH_STORAGE_KEY = "silicosafe_auth";
 
 async function apiRequest(path, options = {}) {
