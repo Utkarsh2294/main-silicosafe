@@ -92,3 +92,97 @@ code {
   color: #ffffff !important;
   border: 2px solid transparent !important;
 }
+/* ==========================================================================
+   MOBILE RESPONSIVENESS OVERRIDES
+   These rules override inline styles to make the app responsive on small screens
+   ========================================================================== */
+@media (max-width: 1024px) {
+  /* General padding adjustments for smaller screens */
+  section, footer, nav > div {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+@media (max-width: 768px) {
+  /* 1. Fix all hardcoded 2-column, 3-column, and 4-column grids */
+  div[style*="grid-template-columns: 1fr 1fr"],
+  div[style*="grid-template-columns: 2fr 1fr 1fr 1fr"],
+  div[style*="grid-template-columns: 1.1fr 0.9fr"],
+  div[style*="grid-template-columns: 1.1fr .9fr"],
+  div[style*="grid-template-columns: repeat(3, 1fr)"],
+  div[style*="grid-template-columns: repeat(3,1fr)"],
+  div[style*="grid-template-columns: 1.2fr 0.8fr 0.8fr"],
+  div[style*="grid-template-columns: 1.2fr .8fr .8fr"],
+  div[style*="grid-template-columns: 1fr 1fr;"],
+  div[style*="grid-template-columns: 2fr 1fr 1fr 1fr;"],
+  div[style*="grid-template-columns: 1.1fr 0.9fr;"],
+  div[style*="grid-template-columns: 1.1fr .9fr;"],
+  div[style*="grid-template-columns: repeat(3, 1fr);"],
+  div[style*="grid-template-columns: repeat(3,1fr);"],
+  div[style*="grid-template-columns: 1.2fr 0.8fr 0.8fr;"],
+  div[style*="grid-template-columns: 1.2fr .8fr .8fr;"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* 2. Structural grid overrides for specific sections */
+  footer > div > div:first-child {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  div > div > div[style*="align-items: start"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* 3. Navbar responsiveness */
+  nav {
+    height: auto !important;
+    min-height: 68px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  nav > div {
+    flex-wrap: wrap !important;
+    gap: 16px !important;
+    justify-content: center !important;
+  }
+  nav > div > div:nth-child(2) {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 12px !important;
+  }
+  /* 4. Hero Section responsiveness */
+  #home > div {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 32px !important;
+  }
+  #home > div > div {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  /* 5. Fix oversized fonts on mobile */
+  h1 {
+    font-size: 38px !important;
+    line-height: 1.2 !important;
+  }
+  h2 {
+    font-size: 28px !important;
+  }
+  /* 6. Admin Panel / Lists */
+  .admin-panel,
+  div[style*="grid-template-columns: 1.2fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    padding: 16px 0 !important;
+  }
+  /* 7. General fixes for full width elements */
+  img, svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  /* Schemes Page Grid Fix */
+  div[style*="repeat(auto-fill, minmax(305px, 1fr))"],
+  div[style*="repeat(auto-fill,minmax(305px,1fr))"] {
+    grid-template-columns: 1fr !important;
+  }
+}
