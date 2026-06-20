@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+torchxrayvision
+torch
+Pillow
+numpy
+scikit-image
+python-multipart
