@@ -374,7 +374,6 @@ console.log("VITE_API_URL =", import.meta.env.VITE_API_URL);
 const API_BASE = (import.meta.env.VITE_API_URL || "http://localhost:8000").replace(/\/$/, "");
 
 console.log("API_BASE =", API_BASE);
-const AI_API_BASE = (import.meta.env.VITE_AI_API_URL || "http://localhost:8000").replace(/\/$/, "");
 const AUTH_STORAGE_KEY = "silicosafe_auth";
 
 async function apiRequest(path, options = {}) {
@@ -404,22 +403,6 @@ async function apiRequest(path, options = {}) {
     throw new Error(data.error || "Request failed");
   }
   return data;
-}
-
-async function analyseXrayWithAI(file) {
-  const formData = new FormData();
-  formData.append("data", JSON.stringify({}));
-  formData.append("xray", file);
-
-  let response;
-  try {
-    response = await fetch(`${AI_API_BASE}/analyse`, { method: "POST", body: formData });
-  } catch {
-    throw new Error(`Cannot connect to the AI analysis server at ${AI_API_BASE}.`);
-  }
-  const json = await response.json().catch(() => ({}));
-  if (!response.ok) throw new Error(json.error || "AI analysis failed");
-  return json;
 }
 
 function stripHtml(value = "") {
@@ -1299,30 +1282,6 @@ function TriagePage({ lang }) {
       return URL.createObjectURL(data.xrayFile);
     });
     setLoading(true);
-
-    if (data.xrayFile) {
-      try {
-        const ai = await analyseXrayWithAI(data.xrayFile);
-        if (ai.status === "rejected") {
-          setLoading(false);
-          alert(
-            lang === "en"
-              ? `This doesn't look like a chest X-ray: ${ai.error}`
-              : `यह छाती का एक्स-रे नहीं लगता: ${ai.error}`
-          );
-          return;
-        }
-      } catch (err) {
-        setLoading(false);
-        alert(
-          lang === "en"
-            ? "Could not reach the AI analysis server. Please try again."
-            : "AI विश्लेषण सर्वर से जुड़ नहीं हो सका। कृपया फिर से प्रयास करें।"
-        );
-        return;
-      }
-    }
-
     await new Promise(r => setTimeout(r, 2200));
     const score = calcScore(data);
     const confidence = Math.min(97, 58 + Math.round(score * 0.37));
