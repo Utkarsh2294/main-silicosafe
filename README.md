@@ -1,7 +1,7 @@
 <<<<<<< HEAD
 # SilicoSafe — AI Diagnostic Triage for Silicosis
 
-> A mobile-first clinical triage tool that helps frontline health workers detect silicosis in dust-exposed workers using occupational history, symptom assessment, and AI-powered chest X-ray analysis.
+> A  clinical triage tool that helps frontline health workers detect silicosis in dust-exposed workers using occupational history, symptom assessment, and AI-powered chest X-ray analysis.
 
 <br>
 
