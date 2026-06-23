@@ -11,7 +11,6 @@
 [![PyTorch](https://img.shields.io/badge/Model-DenseNet121-EE4C2C?style=flat-square&logo=pytorch)](https://github.com/mlmed/torchxrayvision)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)]()
 
-> Full-stack setup, database, admin login, and deployment notes are in [DEPLOYMENT.md](./DEPLOYMENT.md).
 
 ---
 
